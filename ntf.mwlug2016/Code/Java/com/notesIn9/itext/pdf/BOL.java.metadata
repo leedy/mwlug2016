@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="852580020069F0BB" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="176" sequence="28" unid="662BA89BB429ABBD8525800100820D69">
+<created><datetime dst="true">20160731T194031,13-04</datetime></created>
+<modified><datetime dst="true">20160801T151709,57-04</datetime></modified>
+<revised><datetime dst="true">20160801T150835,08-04</datetime></revised>
+<lastaccessed><datetime dst="true">20160801T151709,57-04</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20160801T151709,57-04</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=David Leedy/O=Ni9</name></updatedby>
+<wassignedby><name>CN=David Leedy/O=Ni9</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>com/notesIn9/itext/pdf/BOL.java</text></item>
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>com/notesIn9/itext/pdf/BOL.java</text></item>
+
+</note>

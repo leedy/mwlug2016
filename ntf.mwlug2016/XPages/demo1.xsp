@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	From Steve Zavocki
+	<xp:this.resources>
+		<xp:script src="/csjsUtilities.js" clientSide="true"></xp:script>
+	</xp:this.resources>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+
+	<xp:eventHandler event="onClientLoad" submit="false">
+		<xp:this.script><![CDATA[var pathArray = window.location.pathname.split( '/' ); 
+//var path = "/" + pathArray[1] + "/" + pathArray[2] + "?Logout&redirectto=https://www.serveraddress.com/databasename.nsf/sessionExpired?OpenPage";
+
+var dbName = pathArray[1];
+var pageName = pathArray[2];
+console.log("dbName : " + dbName);
+console.log("pageName : " + pageName);
+
+var base = "/" + pathArray[1] + "/" + pathArray[2];
+var path = "/" + dbName + "?Logout&redirectto=" + "/" + dbName  + "/sessionExpired?OpenPage"; 
+	//returns relative path to application home, example: "/atm/atm.nsf" 
+	//1860000 represents 31 minutes in milliseconds
+setAutoRefresh(15000,path); ]]></xp:this.script>
+	</xp:eventHandler>
+	http://notesspeak.blogspot.com/2014/06/force-your-expired-xpage-to-return-to.html
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+</xp:view>
