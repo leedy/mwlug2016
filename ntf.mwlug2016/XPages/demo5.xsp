@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:panel id="MainContent">
+
+		<xp:this.data>
+			<xe:objectData var="controller">
+				<xe:this.createObject><![CDATA[#{javascript:return new controller.demo5();
+}]]></xe:this.createObject>
+			</xe:objectData>
+		</xp:this.data>
+		<xp:br></xp:br>
+		bitmasks
+		<xp:br></xp:br>
+
+		<xp:panel>
+			Standard Names :&#160;
+			<xe:formRow id="formRow3" label="Standard Columns">
+							<xe:djextNameTextBox id="djextNameTextBox1" value="#{controller.defaultColumns}" multipleSeparator="," multipleTrim="true" showReadonlyAsDisabled="true" disabled="true" >
+								<xp:eventHandler event="onChange" submit="true" refreshMode="partial" refreshId="MainContent"></xp:eventHandler>
+							</xe:djextNameTextBox>
+					</xe:formRow>
+
+		</xp:panel>
+
+
+	</xp:panel>
+</xp:view>
