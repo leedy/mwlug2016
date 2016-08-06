@@ -5,21 +5,13 @@
     <default-prefix>xc</default-prefix>
   </faces-config-extension>
   <composite-component>
-    <component-type>cc_upload</component-type>
-    <composite-name>cc_upload</composite-name>
-    <composite-file>/cc_upload.xsp</composite-file>
+    <component-type>bs_grid</component-type>
+    <composite-name>bs_grid</composite-name>
+    <composite-file>/bs_grid.xsp</composite-file>
     <composite-extension>
       <designer-extension>
         <in-palette>true</in-palette>
       </designer-extension>
     </composite-extension>
-    <property>
-      <property-name>showAdd</property-name>
-      <property-class>boolean</property-class>
-    </property>
-    <property>
-      <property-name>token</property-name>
-      <property-class>string</property-class>
-    </property>
   </composite-component>
 </faces-config>

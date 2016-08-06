@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	rendered="false">PLUpload File
+	Processor
+	<xp:this.beforeRenderResponse><![CDATA[#{javascript:// Process Uploads
+
+//print("PLUpload : Started");
+
+importPackage(java.io);
+importPackage(java.util);
+
+
+try {
+	print ("PLUpload : get Access To The Uploaded File");
+	
+	var exCon:javax.faces.context.ExternalContext = facesContext.getExternalContext();
+	var response:com.ibm.xsp.webapp.XspHttpServletResponse = exCon.getResponse();
+	var request:com.sun.faces.context.MyHttpServletRequestWrapper = exCon.getRequest();
+ 
+ 
+ 	// The ParameterMap appears to be a map of <String, UploadedFile>. Where string is "name=(nameofthefile)"
+	var map:java.util.Map = request.getParameterMap();
+	//print ("PLUpload : Map : " + map);
+	
+	//TODO: Iteratate over this map and find out what's all inside
+	
+	// This is a URL Parameter
+	var uploadToken = param.get("token");
+	print ("PLUpload : Upload Key : " + uploadToken);
+ 	
+ 	
+ 	var dataName = map.get("dataName");		
+	if (dataName==null || dataName == "") {
+		// print ("PLUpload : Using default dataName name of file");
+		dataName = "file";	//default name for files uploaded by the SWF uploader
+		// This seems to be used the most in testing
+	} else {
+		// print ("PLUpload : dataName name supplied by runtime");
+	}
+
+ 	
+ 	// print ("PLUpload : dataName : " + dataName);
+ 	// dataName seems to be "file" typically at this point
+ 	
+ 	// this call gets the actual Uploaded File
+ 	var fileData:com.ibm.xsp.http.UploadedFile = map.get(dataName);
+
+	
+	var fileName = map.get("name");
+	if (fileName == null || fileName == "") {
+		fileName = fileData.getClientFileName();
+	}	 	
+
+	
+ 	//print ("PLUpload : FileName : " + fileName);
+	//print ("PLUpload : Temporary File Name : " + fileData.getClientFileName());
+	// content type is like "image/jpeg"
+	//print ("PLUpload : Type : " + fileData.getContentType());
+	//print ("PLUpload : length : " + fileData.getContentLength());
+ 		
+ 	// Remove special characters from the corrected filename before renaming the file
+ 	var sanFileName = @ReplaceSubstring(fileName,"`","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"~","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"#","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"@","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"!","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"%","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"^","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"&","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"*","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"(","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,")","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"[","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"]","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"{","");
+ 	var sanFileName = @ReplaceSubstring(sanFileName,"}","");
+	var sanFileName = @ReplaceSubstring(sanFileName,";","");
+	var sanFileName = @ReplaceSubstring(sanFileName,"'","");
+	var sanFileName = @ReplaceSubstring(sanFileName,":","");
+	var sanFileName = @ReplaceSubstring(sanFileName,"\"","");
+	var sanFileName = @ReplaceSubstring(sanFileName,"|","");
+	var sanFileName = @ReplaceSubstring(sanFileName,"\\","");
+	var sanFileName = @ReplaceSubstring(sanFileName,"<","");
+	var sanFileName = @ReplaceSubstring(sanFileName,",","");
+	var sanFileName = @ReplaceSubstring(sanFileName,">","");
+	var sanFileName = @ReplaceSubstring(sanFileName,"?","");
+	var sanFileName = @ReplaceSubstring(sanFileName,"/","");
+	var sanFileName = @ReplaceSubstring(sanFileName," ","");
+ 		
+ 	//print ("PLUpload : Sanatized FileName : " + sanFileName);
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 	var tempFile = fileData.getServerFile();
+ 	//var correctedFile = new java.io.File( tempFile.getParentFile().getAbsolutePath() + java.io.File.separator + fileData.getClientFileName() );
+ 	  var correctedFile = new java.io.File( tempFile.getParentFile().getAbsolutePath() + java.io.File.separator + sanFileName );
+ 	
+ 		
+ 	//rename the file on the OS so we can embed it with its correct name
+ 	// absolutePath should equal the full path and name of the file  c:\windows\temp\notesXXXX\xspupload\filename.ext
+ 	//print ("PLUpload : Corrected File Name : " + correctedFile.getAbsolutePath() );
+ 	var success = tempFile.renameTo(correctedFile);
+
+	// Find or Create An Upload Document.
+	//print("PLUpload : Create Attachment Document");
+	var thisDB:NotesDatabase = sessionAsSigner.getDatabase(session.getServerName(),session.getCurrentDatabase().getFilePath());
+	var uploadDoc:NotesDocument = thisDB.createDocument();
+	uploadDoc.replaceItemValue("Form","fm_file");
+	uploadDoc.replaceItemValue("uploadToken",uploadToken);
+	//uploadDoc.replaceItemValue("fileName",fileName);
+	uploadDoc.replaceItemValue("fileName",sanFileName);
+	uploadDoc.replaceItemValue("Type",fileData.getContentType());
+	uploadDoc.replaceItemValue("Size",fileData.getContentLength());
+	
+	
+	//print("PLUpload : Saving Attachment Locally");
+	var uploadField:NotesRichTextItem = uploadDoc.createRichTextItem("attachment");
+	uploadField.embedObject(1454, "", correctedFile.getAbsolutePath(), null);
+	uploadDoc.save(true);
+	
+	//rename the temporary file back to its original name so it's automatically removed from the os' file system.
+	//print("PLUpload : Rename Temp File Back To Original");
+ 	correctedFile.renameTo(tempFile);
+
+	// Send a reply back to PLUpload
+	//print("PLUpload: Send Response To Uploader");
+	var writer = response.getWriter();		
+	response.setContentType("text/html");
+	response.setHeader("Cache-Control", "no-cache");		//no caching
+	response.setDateHeader("Expires", -1);		
+	writer.write( "{\"jsonrpc\" : \"2.0\", \"result\" : null, \"id\" : \"id\", \"thumbnailURL\" : \"" + uploadDoc.getUniversalID() + "\"}"); 
+	facesContext.responseComplete();
+
+
+	// Signal that we have finished
+	print("PLUpload : Finished");
+	facesContext.responseComplete();
+	
+	// Process the Uploads
+	print("PLUpload : Process Uploads")
+	
+	
+	
+	FileImporter.processUploads(uploadToken);
+	
+	
+} catch (e) {
+	print ("PLUpload : Error: " + e.toString() );
+} 
+}]]></xp:this.beforeRenderResponse></xp:view>

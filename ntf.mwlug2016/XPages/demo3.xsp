@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	
+	<xc:res_JavaScriptLibraries></xc:res_JavaScriptLibraries>
+
+	
+	PLUPload
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+
+	<xc:cc_upload showAdd="true" token="1"></xc:cc_upload>
+</xp:view>

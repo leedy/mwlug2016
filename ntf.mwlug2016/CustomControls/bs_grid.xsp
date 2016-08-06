@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<div class="row">
+		<div class="col-sm-1" style="border:1px solid black;">1</div>
+		<div class="col-sm-1" style="border:1px solid black;">2</div>
+		<div class="col-sm-1" style="border:1px solid black;">3</div>
+		<div class="col-sm-1" style="border:1px solid black;">4</div>
+		<div class="col-sm-1" style="border:1px solid black;">5</div>
+		<div class="col-sm-1" style="border:1px solid black;">6</div>
+		<div class="col-sm-1" style="border:1px solid black;">7</div>
+		<div class="col-sm-1" style="border:1px solid black;">8</div>
+		<div class="col-sm-1" style="border:1px solid black;">9</div>
+		<div class="col-sm-1" style="border:1px solid black;">10</div>
+		<div class="col-sm-1" style="border:1px solid black;">11</div>
+		<div class="col-sm-1" style="border:1px solid black;">12</div>
+	</div>
+</xp:view>

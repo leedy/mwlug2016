@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core">
 
+
 	<xp:this.resources>
 
+		<!-- temporary redefine define.amd object  (Dojo AMD loader) -->
+		<xp:script clientSide="true" type="text/javascript">
+			<xp:this.contents><![CDATA[${javascript:"if (typeof define === 'function' && define.amd) {if(define.amd.vendor =='dojotoolkit.org'){define._amd = define.amd;delete define.amd;}}";}]]></xp:this.contents>
+		</xp:script>
 
+		<!-- load jquery AMD enabled widgets -->
+		<xp:script src="/.ibmxspres/.extlib/responsive/jquery/jquery.min.js" clientSide="true" />
+		<xp:script src="/jquery-ui-1.12.0/jquery-ui.js" clientSide="true" />
 		<xp:script src="/plupload-2.1.9/js/plupload.full.min.js"
 			clientSide="true" />
 		<xp:script
 			src="/plupload-2.1.9/js/jquery.ui.plupload/jquery.ui.plupload.min.js"
 			clientSide="true" />
 
+		<xp:styleSheet href="/jquery-ui-1.12.0/jquery-ui.min.css"></xp:styleSheet>
+		<xp:styleSheet
+			href="/plupload-2.1.9/js/jquery.ui.plupload/css/jquery.ui.plupload.css" />
+
+		<!-- restore define.amd object (Dojo AMD loader) -->
+		<xp:script clientSide="true">
+			<xp:this.contents><![CDATA[${javascript:"if (typeof define === 'function' && define._amd) {define.amd = define._amd; delete define._amd;}"}]]></xp:this.contents>
+		</xp:script>
+
+	</xp:this.resources>
+
+
+	<xp:this.resources>
+
+
+		
+
 	</xp:this.resources>
 </xp:view>
+
+
+
