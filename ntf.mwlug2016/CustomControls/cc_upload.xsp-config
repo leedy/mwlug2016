@@ -13,5 +13,13 @@
         <in-palette>true</in-palette>
       </designer-extension>
     </composite-extension>
+    <property>
+      <property-name>showAdd</property-name>
+      <property-class>boolean</property-class>
+    </property>
+    <property>
+      <property-name>token</property-name>
+      <property-class>string</property-class>
+    </property>
   </composite-component>
 </faces-config>

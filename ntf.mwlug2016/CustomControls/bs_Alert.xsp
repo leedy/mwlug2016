@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+	<xp:panel rendered="#{pageMessage.valid}"
+		styleClass="#{javascript:pageMessage.getStyle();}">
+		
+
+
+		<xp:text escape="true" id="computedField1"
+			value="#{pageMessage.title}">
+		</xp:text>
+		<xp:br></xp:br>
+		<xp:text escape="true" id="computedField2"
+			value="#{pageMessage.body}">
+		</xp:text>
+		<br />
+
+		<xp:br></xp:br>
+		<xp:repeat id="repeat1" rows="30"
+			value="#{javascript:pageMessage.getFieldMessages().keySet()}"
+			var="rowData" indexVar="rowIdx">
+			<xp:text escape="true" id="computedField3"
+				value="#{javascript:rowData}">
+			</xp:text>
+			<br />
+		</xp:repeat>
+
+		<xp:br></xp:br></xp:panel>
+</xp:view>

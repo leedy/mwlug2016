@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:on="http://www.openntf.org/domino/xsp">
+	<xp:panel id="MainContent">
+
+		<xp:this.data>
+			<xe:objectData var="controller">
+				<xe:this.createObject><![CDATA[#{javascript:return new controller.demo5();
+}]]></xe:this.createObject>
+			</xe:objectData>
+		</xp:this.data>
+		<xp:br></xp:br>
+		bitmasks
+		<xp:br></xp:br>
+
+		<xp:panel>
+			Standard Names :&#160;
+			<xe:formRow id="formRow3" label="Standard Columns">
+				<xe:djextNameTextBox id="djextNameTextBox1"
+					value="#{controller.defaultColumns}" multipleSeparator=","
+					multipleTrim="true" showReadonlyAsDisabled="true" disabled="true">
+					<xp:eventHandler event="onChange" submit="true"
+						refreshMode="partial" refreshId="MainContent"></xp:eventHandler>
+				</xe:djextNameTextBox>
+			</xe:formRow>
+			<br/>
+			
+			Additional Columns  :&#160;
+			
+			<xe:formRow id="formRow1" label="Additional Columns">
+				<xe:djextNameTextBox id="djextNameTextBox3"
+					value="#{controller.selectedFields}" multipleSeparator=","
+					multipleTrim="true">
+					<xp:eventHandler event="onChange" submit="true"
+						refreshMode="partial" refreshId="MainContent"></xp:eventHandler>
+				</xe:djextNameTextBox>
+
+				<xe:valuePicker id="valuePicker1" for="djextNameTextBox3">
+					<xe:this.dataProvider>
+						<on:collectionValuePicker collection="#{controller.optionalFields}">
+						</on:collectionValuePicker>
+					</xe:this.dataProvider>
+				</xe:valuePicker>
+			</xe:formRow>
+
+		</xp:panel>
+
+
+	
+	<xp:br></xp:br>
+	Selected Columns :&#160;<xp:br></xp:br>
+	<xp:br></xp:br>
+	Bitmask :&#160;:&#160;:&#160;
+	<xp:text escape="true" id="computedField1"
+		value="#{controller.bitMask}">
+		<xp:this.converter>
+			<xp:convertNumber type="number" integerOnly="true"></xp:convertNumber>
+		</xp:this.converter>
+	</xp:text>
+	&#160; &#160; &#160;
+	<xp:button value="refresh" id="button1">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+		</xp:eventHandler></xp:button>
+	
+	<xp:br></xp:br>
+	<xp:link escape="true" id="link2" target="_blank"
+		outerStyleClass="lotusBtn" value="#{controller.individualReport}"
+		styleClass="btn btn-primary">
+		<xp:image id="image3"></xp:image>
+		&#160; Download Excel
+	</xp:link>
+	</xp:panel></xp:view>
+

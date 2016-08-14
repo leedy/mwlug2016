@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core">MWLUG 2016<xp:br></xp:br><xp:br></xp:br><xp:br></xp:br>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xc:bs_NavBar></xc:bs_NavBar>
+	<xp:br></xp:br>
+	MWLUG 2016
+	<xp:br></xp:br>
+	<xp:br></xp:br>
+	<xp:br></xp:br>
 	1.
-	<xp:link escape="true" text="Force User Logout" id="link1" value="/demo1.xsp"></xp:link>
-	<xp:br></xp:br>2. 
-	<xp:link escape="true" id="link2" value="/demo2.xsp" text="Fill a PDF Form"></xp:link><xp:br></xp:br>
+	<xp:link escape="true" text="Force User Logout" id="link1"
+		value="/demo1.xsp">
+	</xp:link>
+	<xp:br></xp:br>
+	2. 
+	<xp:link escape="true" id="link2" value="/demo2.xsp"
+		text="Fill a PDF Form">
+	</xp:link>
+	<xp:br></xp:br>3.&#160;<xp:link escape="true" id="link3" value="/demo3.xsp" text="PlUpload">
+	</xp:link>
+	<xp:br></xp:br>5.&#160;<xp:link escape="true" id="link4" value="/demo5.xsp"
+		text="Bitmask">
+	</xp:link>
+	<xp:br></xp:br><xp:link escape="true" id="link5" value="/Messages.xsp" text="Messages">
+	</xp:link>
+	<xp:br></xp:br>
 
+	
+	<xp:br></xp:br>
+	<xp:br></xp:br>
 </xp:view>

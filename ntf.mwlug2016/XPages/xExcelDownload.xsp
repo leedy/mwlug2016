@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	rendered="false">
+	<xp:this.beforePageLoad><![CDATA[#{javascript:
+// Run a report
+var thisReport = new com.notesIn9.poi.ExcelDemo();
+thisReport.run();}]]></xp:this.beforePageLoad>
+	PDF Report Generator
+</xp:view>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <xp:view
 	xmlns:xp="http://www.ibm.com/xsp/core"
 	xmlns:xe="http://www.ibm.com/xsp/coreex"
 	xmlns:xc="http://www.ibm.com/xsp/custom"
 	xmlns:jQuery="http://www.jquery.com/xsp/coreex"
 	id="attachControl">
+	
 	<xp:this.resources>
-		<xp:script
-			src="/.ibmxspres/.czarBase/jquery-1.10.2/jquery-1.10.2.min.js" clientSide="true" />
-		<xp:script
-			src="/.ibmxspres/.czarBase/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js" clientSide="true" />
-		<xp:script
-			src="/.ibmxspres/.czarBase/plupload-2.1.9/js/plupload.full.min.js" clientSide="true" />
-		<xp:script
-			src="/.ibmxspres/.czarBase/plupload-2.1.9/js/jquery.ui.plupload/jquery.ui.plupload.min.js" clientSide="true" />
-		<xp:styleSheet href="/.ibmxspres/.czarBase/jquery-ui-1.10.3/themes/base/minified/jquery-ui.min.css"></xp:styleSheet>
-		<xp:styleSheet href="/.ibmxspres/.czarBase/plupload-2.1.9/js/jquery.ui.plupload/css/jquery.ui.plupload.css" />
+<!--		<xp:script-->
+<!--			src="/.ibmxspres/.czarBase/jquery-1.10.2/jquery-1.10.2.min.js" clientSide="true" />-->
+<!--		<xp:script-->
+<!--			src="/.ibmxspres/.czarBase/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js" clientSide="true" />-->
+		
+<!--		<xp:styleSheet href="/.ibmxspres/.czarBase/jquery-ui-1.10.3/themes/base/minified/jquery-ui.min.css"></xp:styleSheet>-->
+<!--		<xp:styleSheet href="/.ibmxspres/.czarBase/plupload-2.1.9/js/jquery.ui.plupload/css/jquery.ui.plupload.css" />-->
 		
 
 	</xp:this.resources>
@@ -59,13 +59,9 @@ var d = getComponent('uploadDialog')
 d.show()}]]></xp:this.action>
 			</xp:eventHandler></xp:link>
 		</xp:panel>
-		<xe:dialog
-			id="uploadDialog"
-			keepComponents="false"
-			title="Add Files"
-			rendered="#{javascript:compositeData.showAdd}"
-			preload="false"
-			preventCache="true">
+		<xe:dialog id="uploadDialog" keepComponents="false"
+			title="Add Files" rendered="#{javascript:compositeData.showAdd}"
+			preload="false" preventCache="true" refreshOnShow="true">
 			<xe:this.onShow><![CDATA[$(function() {
 	$("#uploader").plupload({
 		runtimes : 'html5,flash, html4',
@@ -80,8 +76,8 @@ d.show()}]]></xp:this.action>
             thumbs: true, // Show thumbs
             active: 'list'
         },
-		flash_swf_url : '/xsp/.ibmxspres/.czarBase/plupload/plupload.flash.swf',
-		url : '/fileVault/fileVault-Info.nsf/xFileUpload.xsp?token=#{javascript:compositeData.token}'
+		flash_swf_url : '/plupload/js/Moxie.swf',
+		url : '/mwlug2016.nsf/xFileUpload.xsp?token=#{javascript:compositeData.token}'
 	});
 	
 	var uploader = $('#uploader').plupload('getUploader');
@@ -96,14 +92,16 @@ d.show()}]]></xp:this.action>
 	});
 	
 });]]></xe:this.onShow>
-			<xe:dialogContent
-				id="dialogContent1"
-				style="padding:0px;overflow:hidden;height:300px;width:700px">
-				<div
-					id="uploader">
-					<p>File uploads are disabled. Your browser doesn't have HTML5, Flash or HTML4 support.</p>
+			<xe:dialogContent id="dialogContent1"
+				style="padding:0px;overflow:hidden;">
+				
+				<div id="uploader">
+					<p>
+						File uploads are disabled. Your browser doesn't
+						have HTML5, Flash or HTML4 support.
+					</p>
 				</div>
-			</xe:dialogContent>
+				</xe:dialogContent>
 			<xe:dialogButtonBar id="dialogButtonBar1">
 				<xp:panel
 					rendered="#{javascript:deviceBean.isIpad()}">
@@ -114,6 +112,8 @@ d.show()}]]></xp:this.action>
 d.hide()}]]></xp:this.action>
 						</xp:eventHandler>
 					</xp:button>
-				</xp:panel></xe:dialogButtonBar></xe:dialog>
+				</xp:panel>
+			</xe:dialogButtonBar>
+		</xe:dialog>
 	</xp:panel>
 	</xp:view>
