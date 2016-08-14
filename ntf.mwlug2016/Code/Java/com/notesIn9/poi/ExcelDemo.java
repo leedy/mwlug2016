@@ -35,12 +35,13 @@ import javax.servlet.ServletOutputStream;
 
 import com.ibm.xsp.extlib.util.ExtLibUtil;
 import com.ibm.xsp.webapp.XspHttpServletResponse;
+import com.notesIn9.base.AbstractObject;
 import com.notesIn9.model.State;
 import com.notesIn9.model.Person;
 import com.notesIn9.model.PersonGroup;
 import com.notesIn9.model.util.PersonField;
 
-public class ExcelDemo {
+public class ExcelDemo extends AbstractObject {
 
 	private static final long serialVersionUID = 1L;
 
@@ -307,7 +308,7 @@ public class ExcelDemo {
 				for (Person person : this.personGroup.getPeople()) {
 					addToRowNumber(1);
 					count++;
-
+					this.console("BDay : " + person.getBirthDay());
 					row = sheet.createRow(rowNumber);
 					colCount = 0;
 					cell = row.createCell(colCount);
