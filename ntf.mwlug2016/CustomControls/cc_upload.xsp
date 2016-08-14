@@ -93,7 +93,7 @@ d.show()}]]></xp:this.action>
 	
 });]]></xe:this.onShow>
 			<xe:dialogContent id="dialogContent1"
-				style="padding:0px;overflow:hidden;height:300px;width:700px">
+				style="padding:0px;overflow:hidden;">
 				
 				<div id="uploader">
 					<p>

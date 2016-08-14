@@ -1,4 +1,4 @@
-package com.notesIn9.model.Model;
+package com.notesIn9.model;
 
 import java.util.Date;
 
@@ -8,10 +8,10 @@ import org.openntf.domino.Session;
 import org.openntf.domino.View;
 import org.openntf.domino.utils.Factory;
 
-import com.ibm.dtfj.javacore.parser.framework.Section;
+
 import com.notesIn9.model.util.PersonField;
 
-public class Person extends com.notesIn9.base.AbstractObject {
+public class Person extends com.notesIn9.base.AbstractObject implements Comparable<Person> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +26,8 @@ public class Person extends com.notesIn9.base.AbstractObject {
 	private String country;
 	private String email;
 	private Date birthDay;
+	
+	private String addInfo;
 
 	private boolean valid;
 
@@ -51,6 +53,8 @@ public class Person extends com.notesIn9.base.AbstractObject {
 	}
 
 	public Person load(String id) {
+		
+		this.id = id;
 
 		Document doc = this.getDocument();
 
@@ -73,15 +77,21 @@ public class Person extends com.notesIn9.base.AbstractObject {
 
 		this.id = doc.getItemValueString("number");
 		this.firstName = doc.getItemValueString("firstName");
-		this.middleName = doc.getItemValueString("middleName");
+		this.middleName = doc.getItemValueString("middle");
+		this.lastName = doc.getItemValueString("lastName");
 		this.address = doc.getItemValueString("address");
 		this.city = doc.getItemValueString("city");
 		this.state = doc.getItemValueString("state");
-		this.zip = doc.getItemValueString("zip");
+		this.zip =  doc.getItemValue("zip").toString();
 		this.country = doc.getItemValueString("email");
 		if (!doc.getItemValueString("birthday").isEmpty()) {
 			this.birthDay = (Date) doc.getItemValue("birthday").get(0);
 		}
+		this.addInfo = doc.getItemValueString("addInfo");
+		
+	
+		
+		
 
 		return true;
 
@@ -93,10 +103,10 @@ public class Person extends com.notesIn9.base.AbstractObject {
 		Database currentDB = session.getCurrentDatabase();
 
 		Database fakeNames = session.getDatabase(currentDB.getServer(),
-				"fakenames.nsf");
+				"testnames.nsf");
 		View vItems = fakeNames.getView("byId");
 
-		Document doc = vItems.getFirstDocumentByKey(id, true);
+		Document doc = vItems.getFirstDocumentByKey(this.id, true);
 
 		return doc;
 	}
@@ -128,6 +138,9 @@ public class Person extends com.notesIn9.base.AbstractObject {
 		doc.replaceItemValue("country", this.getCountry());
 		doc.replaceItemValue("birthDay", this.getBirthDay() );
 		doc.replaceItemValue("number", this.getId());
+		
+		doc.replaceItemValue("addInfo", this.addInfo);
+		
 		
 		return true;
 		
@@ -231,6 +244,16 @@ public class Person extends com.notesIn9.base.AbstractObject {
 	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
+	
+	
+
+	public String getAddInfo() {
+		return addInfo;
+	}
+
+	public void setAddInfo(String addInfo) {
+		this.addInfo = addInfo;
+	}
 
 	public Object getValue(PersonField key) {
 		switch (key) {
@@ -254,12 +277,93 @@ public class Person extends com.notesIn9.base.AbstractObject {
 			return this.getEmail();
 		case BIRTHDAY:
 			return this.getBirthDay();
+		case ADDINFO:
+			return this.getAddInfo();
+		case ID:
+			return this.getId();
 
 			// all other instances
 
 		default:
-			return null;
+			return "";
 		}
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	
+	public int compareTo(Person personToCompare) {
+		// I think this is the DEFAULT comparison
+		// Sorts ItemID's
+
+		return Person.compare(this, personToCompare);
+	}
+	
+	public static int compare(Person arg0, Person arg1) {
+		int IS_EQUAL = 0;
+		int IS_LESS_THAN = -1;
+		int IS_GREATER_THAN = 1;
+
+		if (null == arg0) {
+
+			return (null == arg1) ? IS_EQUAL : IS_LESS_THAN;
+		} else if (null == arg1) {
+
+		return IS_GREATER_THAN; } // (null == arg0)
+
+		if (arg0.equals(arg1)) { return IS_EQUAL; }
+
+		int result = Person.compareLastName(arg0, arg1);
+		if (IS_EQUAL == result) {
+			result = Person.compareFirstName(arg0, arg1);
+			if (IS_EQUAL == result) {
+				result = Person.compareId(arg0, arg1);
+			}
+		}
+
+		return result;
+
+	} // compare(Item, Item)
+
+	
+	private static int compareLastName(Person arg0, Person arg1) {
+
+		return arg0.getLastName().compareTo(arg1.getLastName());
+
+	}
+	
+	private static int compareFirstName(Person arg0, Person arg1) {
+
+		return arg0.getFirstName().compareTo(arg1.getFirstName());
+
+	}
+	
+	private static int compareId(Person arg0, Person arg1) {
+
+		return arg0.getId().compareTo(arg1.getId());
+
+	}
 }

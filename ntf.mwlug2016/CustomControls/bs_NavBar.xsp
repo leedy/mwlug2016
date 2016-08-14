@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:debug="http://www.openntf.org/xsp/debugtoolbar">
+
+	<xp:this.resources>
+		<xp:styleSheet href="/app.css"></xp:styleSheet>
+	</xp:this.resources>
+	<div class="container">
+		<xp:panel role="navigation"
+			styleClass="navbar navbar-default navbar-fixed-top"
+			id="PanelNavBar">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle"
+						data-toggle="collapse" data-target=".navbar-collapse">
+						<xp:text styleClass="sr-only"
+							value="Toggle navigation" />
+						<xp:repeat value="#{3}">
+							<span class="icon-bar" />
+						</xp:repeat>
+					</button>
+
+
+				</div>
+				<div class="collapse navbar-collapse">
+
+					<ul class="nav navbar-nav">
+						<li>
+							<xp:link styleClass="navbar-brand"
+								text="Home" value="/basic_Menu.xsp" id="link1" />
+						</li>
+						<!--
+							
+							
+							<xp:panel tagName="li" rendered="#{controller.job.isValid}">
+							
+							<xp:link text="#{param.jobId}" >
+							
+							<xp:this.value><![CDATA[#{javascript:return "/job.xsp?jobId=" + param.get("jobId")}]]></xp:this.value>
+							</xp:link>
+							
+							</xp:panel>
+							
+							
+							
+							
+							
+						-->
+					</ul>
+
+
+					<ul class="nav navbar-nav">
+
+						<xp:panel
+							rendered="#{javascript:return Breadcrumb.showHistory()}"
+							tagName="li" styleClass="dropdown">
+
+							<a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-expanded="false">
+								History
+								<span class="caret" />
+							</a>
+
+							<ul class="dropdown-menu" role="menu">
+
+								<xp:repeat id="repeat1" rows="30"
+									var="bcData" indexVar="bcIdx"
+									value="#{javascript:Breadcrumb.getHistory().keySet()}"
+									disableOutputTag="true">
+									<li>
+										<xp:link escape="true"
+											text="#{javascript:bcData}" id="link3"
+											value="#{javascript:Breadcrumb.getHistory().get(bcData)}" />
+
+									</li>
+
+								</xp:repeat>
+
+							</ul>
+
+						</xp:panel>
+					</ul>
+
+
+					<ul class="nav navbar-nav navbar-right">
+
+						<!--<li>
+							<xp:link styleClass="navbar-right" escape="true" id="link2">
+							<xp:this.text><![CDATA[#{javascript:if (facilityInfo.isValid()) {
+							return facilityInfo.getCode();
+							} else { 
+							return "Choose Location";
+							}}]]></xp:this.text>
+							<xp:eventHandler event="onclick" submit="true"
+							refreshMode="partial" refreshId="PanelNavBar">
+							<xp:this.action>
+							<xp:openPage name="/chooseLocation.xsp" />
+							
+							</xp:this.action>
+							</xp:eventHandler>
+							</xp:link>
+							</li>
+							
+						-->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-expanded="false">
+								<xp:text escape="true"
+									id="computedField1">
+									<xp:this.value><![CDATA[#{javascript:@Name("[CN]",session.getEffectiveUserName())}]]></xp:this.value>
+								</xp:text>
+								<span class="caret" />
+							</a>
+							<ul class="dropdown-menu" role="menu">
+
+								<li>
+									<xp:link text="Log Out"
+										id="link5">
+										<xp:eventHandler event="onclick"
+											submit="true" refreshMode="complete">
+											<xp:this.action><![CDATA[#{javascript:print("URL : " + context.getUrl().toString().split(view.getPageName())[0]);
+controller.logOut()
+var href = context.getUrl().toString().split(view.getPageName())[0] + "?Logout&redirectTo=" + context.getUrl().toString().split(view.getPageName())[0]
+facesContext.getExternalContext().redirect(href);}]]></xp:this.action>
+										</xp:eventHandler>
+									</xp:link>
+								</li>
+							</ul>
+						</li>
+
+
+
+					</ul>
+
+
+
+
+
+
+
+
+
+				</div>
+
+
+
+
+			</div>
+		</xp:panel>
+
+	</div>
+</xp:view>

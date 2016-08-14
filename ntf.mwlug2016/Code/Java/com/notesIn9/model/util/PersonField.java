@@ -6,7 +6,7 @@ import com.ibm.commons.util.StringUtil;
 
 
 public enum PersonField {
-	NUMBER("Number"),
+	ID("ID"),
 	FIRST_NAME("First Name"),
 	MIDDLE_NAME("Middle Name"),
 	LAST_NAME("Last Name"),
@@ -16,7 +16,8 @@ public enum PersonField {
 	ZIP("Zip"),
 	COUNTRY("Country"),
 	EMAIL("Email"),
-	BIRTHDAY(Date.class, "Birthday");
+	BIRTHDAY(Date.class, "Birthday"),
+	ADDINFO("Info");
 	
 	
 	private final String	_label;
@@ -63,7 +64,7 @@ public enum PersonField {
 
 
 	public static long getStandardFields() {
-		return PersonField.getFlag(NUMBER, FIRST_NAME, MIDDLE_NAME, LAST_NAME);
+		return PersonField.getFlag(ID, FIRST_NAME, MIDDLE_NAME, LAST_NAME);
 	}
 	
 	public static long getFlag(final PersonField... instances) {

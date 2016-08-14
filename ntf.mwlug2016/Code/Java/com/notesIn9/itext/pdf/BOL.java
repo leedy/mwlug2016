@@ -73,6 +73,13 @@ import com.itextpdf.text.pdf.codec.PngImage;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 
 public class BOL {
+	
+	// NOTE : 
+	// Much of this code was adapted from code by Declan Lynch
+	// With additional modifications by Devin Olson.
+	// I've left in many unused constants and some unneeded code 
+	// The original Declan code combined several PDF's into 1 big report.
+	
 
 	
 	private static final String CONTENT_TYPE = "application/pdf";
@@ -100,14 +107,11 @@ public class BOL {
 	private PdfConcatenate attachWriter_;
 	private transient Database database_;
 
-	// Boolean object so we can null check;
-	private Boolean devServer_;
+	
 	
 	private Map<String, String> params_;
 	
 	
-	private String shipFrom;
-	private String shipTo;
 	
 	private boolean alternate;
 	
@@ -138,7 +142,7 @@ public class BOL {
 		Map<String, String> param = (Map<String, String>) ExtLibUtil.resolveVariable("param");
 		
 		// just a little example of how to get to url parameters
-		if (param.containsKey("manifest")) {
+		if (param.containsKey("other")) {
 			this.alternate = true;
 		}
 		
@@ -304,9 +308,9 @@ public class BOL {
 	 *            the message
 	 */
 	private void printDebug(final String message) {
-		if (this.isDevServer()) {
+		
 			System.out.println(message);
-		}
+		
 	}
 	
 	
@@ -423,14 +427,7 @@ public class BOL {
 		}
 	}
 	
-	/**
-	 * Checks if is dev server.
-	 * 
-	 * @return true, if is dev server
-	 */
-	private boolean isDevServer() {
-		return true;
-	}
+
 	
 	@SuppressWarnings("unchecked")
 	private Map<String, String> getParams() {

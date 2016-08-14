@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xc:bs_NavBar></xc:bs_NavBar>
+
+	<xp:panel styleClass="container">
+
+
+		<xp:this.data>
+			<xe:objectData var="controller">
+				<xe:this.createObject><![CDATA[#{javascript:var temp = new controller.Messages();
+temp.pageInit();
+return temp}]]></xe:this.createObject>
+			</xe:objectData>
+		</xp:this.data>
+		
+	Combobox
+		
+		<xp:comboBox id="comboBox1" value="#{controller.hero}">
+			<xp:selectItems>
+				<xp:this.value><![CDATA[#{controller.both}]]></xp:this.value>
+			</xp:selectItems>
+			<xp:eventHandler event="onchange" submit="true"
+				refreshMode="complete">
+			</xp:eventHandler>
+		</xp:comboBox>
+
+
+		<xp:br></xp:br>
+		<xp:br></xp:br>
+		Name :
+		&#160;
+		<xp:text escape="true" id="computedField1" value="#{controller.hero}"></xp:text>
+		
+		<xp:br></xp:br>
+		<xp:br></xp:br>
+		<xc:bs_Alert></xc:bs_Alert></xp:panel>
+
+
+
+</xp:view>

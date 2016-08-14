@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+  <faces-config-extension>
+    <namespace-uri>http://www.ibm.com/xsp/custom</namespace-uri>
+    <default-prefix>xc</default-prefix>
+  </faces-config-extension>
+  <composite-component>
+    <component-type>bs_Alert</component-type>
+    <composite-name>bs_Alert</composite-name>
+    <composite-file>/bs_Alert.xsp</composite-file>
+    <composite-extension>
+      <designer-extension>
+        <in-palette>true</in-palette>
+        <render-markup>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xd;
+&lt;xp:view&#xd;
+	xmlns:xp="http://www.ibm.com/xsp/core"&#xd;
+	xmlns:xc="http://www.ibm.com/xsp/custom"&gt;&#xd;
+&lt;div&gt;ALERT MESSAGES &lt;/div&gt;&#xd;
+&#xd;
+&lt;/xp:view&gt;&#xd;
+</render-markup>
+      </designer-extension>
+    </composite-extension>
+  </composite-component>
+</faces-config>
