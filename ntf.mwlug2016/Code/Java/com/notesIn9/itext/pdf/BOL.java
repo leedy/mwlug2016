@@ -146,7 +146,7 @@ public class BOL {
 			this.alternate = true;
 		}
 		
-		
+		// Original code combine many different PDF's into 1 big report for printing
 		this.buildFullCoverPage();
 		this.sendToClient(this.getCoverBAOS());
 		
@@ -154,7 +154,7 @@ public class BOL {
 	
 	
 	private void setVariables1() {
-		
+		// Just test data.  Normally you'd pull from a document or object
 		this.shipDate = new Date();
 		this.exhibitorName = "NotesIn9";
 		this.jobNumber = "9";
@@ -219,9 +219,8 @@ public class BOL {
 		//pdfCoverStamper.getAcroFields().setField("destination", manifest.getDestAddressLabel());
 		
 		
-
+		// Lets do a multiple line field.
 		String newLine = "\n";
-		
 		String shipFrom = "Main Street USA" + newLine;
 		shipFrom += "Orlando, FL, 12345";
 		
@@ -354,7 +353,11 @@ public class BOL {
 	 * Close all streams.
 	 */
 	private void closeAllStreams() {
-		this.printDebug("COMS Report : Clean Up : Closing All Streams");
+		// Remember - originally this code did more.
+		// Leaving this in for now to show how you might get started
+		
+		
+		this.printDebug("Report : Clean Up : Closing All Streams");
 		if (this.attachBAOS_ != null) {
 			try {
 				this.attachBAOS_.flush();

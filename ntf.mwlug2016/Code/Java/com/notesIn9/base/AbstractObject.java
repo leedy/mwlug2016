@@ -23,7 +23,7 @@ public class AbstractObject implements Serializable {
 
 	protected void console(final String debugText) {
 
-		// add logic here to not print on production servers.
+		// add logic here to NOT print on production servers.
 
 		System.out.println(this.getClass().getName() + " : " + debugText);
 	}

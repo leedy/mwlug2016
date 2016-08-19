@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
-	
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+
 	<xp:this.resources>
 		<xp:script src="/csjsUtilities.js" clientSide="true"></xp:script>
 	</xp:this.resources>
+	<xc:bs_NavBar></xc:bs_NavBar>
 	<xp:br></xp:br>
-	<xp:br></xp:br>
-	<div class="container">
+	<xp:panel styleClass="container">
+		<xp:this.data>
+			<xe:objectData var="controller">
+				<xe:this.createObject><![CDATA[#{javascript:var temp = new controller.Messages();
+temp.pageInit();
+return temp}]]></xe:this.createObject>
+			</xe:objectData>
+		</xp:this.data>
 		<div class="jumbotron">
-  <h1>Force Logout!</h1>
-  <p>From Steve Zavocki<br/>
-  
-  
-  
-  </p>
-  <p><a class="btn btn-primary btn-lg" href="http://notesspeak.blogspot.com/2014/06/force-your-expired-xpage-to-return-to.html" role="button">Learn more</a></p>
-</div>
-	
-	
-	</div>
+			<h1>Force Logout!</h1>
+			<p>
+				From Steve Zavocki
+				<br />
+
+
+
+			</p>
+			<p>
+				<a class="btn btn-primary btn-lg"
+					href="http://notesspeak.blogspot.com/2014/06/force-your-expired-xpage-to-return-to.html"
+					role="button">
+					Learn more
+				</a>
+			</p>
+		</div>
+
+
+	</xp:panel>
 
 	<xp:eventHandler event="onClientLoad" submit="false">
 		<xp:this.script><![CDATA[var thisUrl = window.location.href;
@@ -32,8 +49,10 @@ console.log("dbPath : " + dbPath);
 console.log("FinalPath : " + finalPath);
 
 //1 minute = 60,000 milliseconds
+//Extra credit - Compute the time based on user id and
+//			   - set it really short for someone you don't like! :)
 setAutoRefresh(15000,finalPath); ]]></xp:this.script>
 	</xp:eventHandler>
-	
+
 
 </xp:view>

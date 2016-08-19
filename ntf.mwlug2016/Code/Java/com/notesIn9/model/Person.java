@@ -121,7 +121,8 @@ public class Person extends com.notesIn9.base.AbstractObject implements Comparab
 			return false;
 		} else {
 			
-			return this.saveValues(doc);
+			this.saveValues(doc);
+			return doc.save();
 		
 		}
 		
@@ -258,6 +259,10 @@ public class Person extends com.notesIn9.base.AbstractObject implements Comparab
 	}
 
 	public Object getValue(PersonField key) {
+		// This is used for the ENUM Demo.  
+		// This is required I think if you extend DataObject
+		
+		
 		switch (key) {
 		case FIRST_NAME:
 			return this.getFirstName();
@@ -291,6 +296,9 @@ public class Person extends com.notesIn9.base.AbstractObject implements Comparab
 		}
 	}
 
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

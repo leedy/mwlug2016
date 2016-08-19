@@ -10,6 +10,8 @@ import org.openntf.domino.utils.Factory.SessionType;
 import com.ibm.xsp.acl.RedirectSignal;
 import com.ibm.xsp.extlib.util.ExtLibUtil;
 import com.notesIn9.xsp.PageMessage;
+import com.notesIn9.xsp.BreadCrumb;
+
 
 public class PageController extends com.notesIn9.base.AbstractObject {
 
@@ -39,6 +41,14 @@ public class PageController extends com.notesIn9.base.AbstractObject {
 		this.loadUserData();
 
 		return true;
+
+	}
+	
+	protected void loadUserData() {
+
+		// We're storing the groups just to have
+		this.userGroups = AbstractObject.getXSPContext().getUser().getGroups();
+		this.userRoles = AbstractObject.getXSPContext().getUser().getRoles();
 
 	}
 
@@ -71,13 +81,7 @@ public class PageController extends com.notesIn9.base.AbstractObject {
 
 	}
 
-	protected void loadUserData() {
 
-		// We're storing the groups just to have
-		this.userGroups = AbstractObject.getXSPContext().getUser().getGroups();
-		this.userRoles = AbstractObject.getXSPContext().getUser().getRoles();
-
-	}
 
 	public boolean isGroupMember(String groupName) {
 
@@ -125,4 +129,15 @@ public class PageController extends com.notesIn9.base.AbstractObject {
 		return qs;
 	}
 
+public void addBreadCrumb(String displayText) {
+		
+		BreadCrumb bc = (BreadCrumb) ExtLibUtil.resolveVariable("Breadcrumb");
+		
+		String currentPage = AbstractObject.getXSPContext().getUrl().getPath() + AbstractObject.getXSPContext().getUrl().getQueryString();
+//		this.console("Page : " + AbstractObject.getXSPContext().getUrl().getPath());
+//		this.console("QS : " + AbstractObject.getXSPContext().getUrl().getQueryString());
+		this.console(currentPage);
+		bc.addLink(displayText, currentPage);
+		
+	}
 }

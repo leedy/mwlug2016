@@ -30,6 +30,8 @@ public class Messages extends com.notesIn9.base.PageController {
 	
 	public boolean pageInit() {
 		super.pageInit();
+		
+		this.addBreadCrumb("Messages Demo");
 	
 		this.dcUniverse = new HashMap<String, String>();
 		this.dcUniverse.put("Oliver Queen", "Green Arrow");
