@@ -19,6 +19,7 @@
 &#xd;
 &lt;/xp:view&gt;&#xd;
 </render-markup>
+        <category>Bootstrap</category>
       </designer-extension>
     </composite-extension>
   </composite-component>

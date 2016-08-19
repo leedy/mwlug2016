@@ -82,17 +82,19 @@ public class Person extends com.notesIn9.base.AbstractObject implements Comparab
 		this.address = doc.getItemValueString("address");
 		this.city = doc.getItemValueString("city");
 		this.state = doc.getItemValueString("state");
-		this.zip =  doc.getItemValue("zip").toString();
-		this.country = doc.getItemValueString("email");
-		if (!doc.getItemValueString("birthday").isEmpty()) {
-			this.birthDay = (Date) doc.getItemValue("birthday").get(0);
+		this.zip =  doc.getItemValueString("zip");
+		this.country = doc.getItemValueString("country");
+
+		// this here is pure OpenNTF API.  It makes things like this easier
+		Date myDate = doc.getItemValue("birthday", Date.class);
+		if (null != myDate ) {
+			this.birthDay = myDate;
 		}
+		
+		this.email = doc.getItemValueString("email");
 		this.addInfo = doc.getItemValueString("addInfo");
 		
-	
 		
-		
-
 		return true;
 
 	}

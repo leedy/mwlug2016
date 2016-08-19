@@ -1,1 +1,305 @@
-body { padding-top: 70px; }
+body { padding-top: 70px;
+	padding-bottom: 75px;
+	line-height: 20px;
+
+}
+
+
+
+.padBottom {
+	padding-bottom: 25px;
+}
+
+.navbar-fixed-bottom {
+	height: 75px !important;
+}
+
+.footer {
+	background-color: #000;
+	height: 70px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.footer a {
+	color: #fff;
+}
+
+.footer .active {
+	color: #ccc;
+}
+
+.width100 {
+	width: 100%;
+}
+
+.width80 {
+	width: 80%;
+}
+
+.nav-tabs.nav-justified>li>a {
+	border-bottom: 1px solid #AC162C;
+	color: #AC162C;
+}
+
+.nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus
+	{
+	border: 1px solid #AC162C;
+	background-color: #AC162C;
+	color: #fff !important;
+}
+
+.scanTarget {
+	height: 50px;
+	font-size: 30px;
+}
+
+.itemCounts {
+	position: relative;
+	vertical-align: top;
+	display: inline-block;
+	padding: 5px;
+	margin: 4px 4px 4px 4px;
+	background-color: #ffffff;
+	border: 2px solid #ed676c;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	zoom: 1; *
+	display: inline;
+}
+
+.btn-huge {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.big {
+	font-size: 64px;
+}
+
+.tap-md {
+	width: 100px;
+	height: 66px;
+}
+
+.tap-sm {
+	display: inline-block;
+	width: 80px;
+	height: 60px;
+	margin-right: 20px;
+	background-color: #AC162C;
+	color: #fff !important;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.bottomButton {
+	display: inline-block;
+	background-color: #AC162C;
+	width: 85px;
+	height: 55px;
+	padding: 6px;
+	text-align: center;
+	white-space: nowrap;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	margin-right: 20px;
+}
+
+.buttonMedium {
+	display: inline-block;
+	background-color: #fff;
+	border: #AC162C;
+	width: 75px;
+	height: 65px;
+	padding: 6px;
+	text-align: center;
+	white-space: nowrap;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid #AC162C;
+	border-radius: 4px;
+	color: #AC162C;
+}
+
+.buttonMediumInvisible {
+	display: inline-block;
+	width: 75px;
+	height: 65px;
+	padding: 6px;
+}
+
+.buttonMedium+.buttonMedium {
+	margin-left: 15px;
+}
+
+.dangerColor {
+	color: #d9534f;
+}
+
+.infoColor {
+	color: #5bc0de;
+}
+
+.successColor {
+	color: #5cb85c;
+}
+
+.manifestRow {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	min-height: 85px;
+	border: 1px solid #e3e3e3;
+}
+
+.select {
+	background-color: #E2D321;
+}
+
+.manifestRow .progress {
+	margin-bottom: 5px;
+}
+
+.buttons-dialog .btn {
+	width: 90px;
+	height: 65px;
+	font-size: 18px;
+	line-height: 1.33;
+}
+
+.buttons-dialog .btn-default {
+	border-color: #ac162c;
+	color: #ac162c;
+}
+
+.buttons-dialog .btn-primary {
+	border-color: #ac162c;
+	color: #FFF;
+}
+
+.button80 {
+	width: 80px;
+	height: 80px;
+}
+
+.icons {
+	color: black;
+	text-align: center;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+/* unvisited link */
+.icons a:link {
+	color: black;
+}
+
+/* visited link */
+.icons a:visited {
+	color: #black;
+}
+
+/* mouse over link */
+.icons a:hover {
+	color: #FF00FF;
+}
+
+/* selected link */
+.icons a:active {
+	color: #0000FF;
+}
+
+.progress-bar {
+	color: black;
+}
+
+.xspmodal {
+	z-index: 950 !important;
+}
+
+.dijitDialogUnderlayWrapper {
+	z-index: 949 !important;
+}
+
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src:
+		url('/xsp/.ibmxspres/.extlib/responsive/bootstrap-3.2.0-dist/fonts/glyphicons-halflings-regular.eot')
+		;
+	src:
+		url('/xsp/.ibmxspres/.extlib/responsive/bootstrap-3.2.0-dist/fonts/glyphicons-halflings-regular.eot?#iefix')
+		format('embedded-opentype'),
+		url('/xsp/.ibmxspres/.extlib/responsive/bootstrap-3.2.0-dist/fonts/glyphicons-halflings-regular.woff')
+		format('woff'),
+		url('/xsp/.ibmxspres/.extlib/responsive/bootstrap-3.2.0-dist/fonts/glyphicons-halflings-regular.ttf')
+		format('truetype'),
+		url('/xsp/.ibmxspres/.extlib/responsive/bootstrap-3.2.0-dist/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular')
+		format('svg');
+}
+
+.btn-primary.disabled,.btn-primary[disabled],fieldset[disabled] .btn-primary,.btn-primary.disabled:hover,.btn-primary[disabled]:hover,fieldset[disabled] .btn-primary:hover,.btn-primary.disabled:focus,.btn-primary[disabled]:focus,fieldset[disabled] .btn-primary:focus,.btn-primary.disabled:active,.btn-primary[disabled]:active,fieldset[disabled] .btn-primary:active,.btn-primary.disabled.active,.btn-primary[disabled].active,fieldset[disabled] .btn-primary.active
+	{
+	background-color: #ac162c;
+	border-color: #951326;
+	opacity: .65;
+	box-shadow: none;
+}
+
+.recentJob {
+	padding: 9px !important;
+	border-radius: 3px !important;
+	border: 1px solid #c41230 !important;
+}
+
+.recentJob .highlight {
+	background-color: yellow;
+}
+
+.recentJob:hover {
+	background-color: #EDE1E1 !important;
+	cursor: pointer !important;
+}
+
+fieldset.jobList {
+	background-color: #FFFFFF !important;
+	border: 1px groove #c41230 !important;
+	padding: 0 1.4em 1.4em 1.4em !important;
+	margin: 0 0 1.5em 0 !important;
+	-webkit-box-shadow: 0px 0px 0px 0px #000;
+	box-shadow: 0px 0px 0px 0px #000;
+}
+
+legend.jobList {
+	font-size: 1.2em !important;
+	font-weight: bold !important;
+	text-align: left !important;
+	width: auto !important;
+	padding: 0 10px !important;
+	border-bottom: none !important;
+}
+
+.dataBlock {
+	padding: 5px;
+	margin: 1px;
+	border-radius: 5px;
+	border: 1px solid #c41230;
+	margin-bottom: 5px;
+	overflow: hidden;
+}
+
+.dataBlock .highlight {
+	background-color: yellow;
+}
+
+.dataBlock:hover {
+	background-color: #EDE1E1 !important;
+	cursor: pointer !important;
+}
+
+
+
+
