@@ -4,7 +4,7 @@
 	xmlns:xe="http://www.ibm.com/xsp/coreex">
 
 	<xp:panel rendered="#{pageMessage.valid}"
-		styleClass="#{javascript:pageMessage.getStyle();}">
+		styleClass="#{pageMessage.style}">
 		
 
 
@@ -19,10 +19,10 @@
 
 		<xp:br></xp:br>
 		<xp:repeat id="repeat1" rows="30"
-			value="#{javascript:pageMessage.getFieldMessages().keySet()}"
+			value="#{pageMessage.fieldMessages.keySet}"
 			var="rowData" indexVar="rowIdx">
 			<xp:text escape="true" id="computedField3"
-				value="#{javascript:rowData}">
+				value="#{rowData}">
 			</xp:text>
 			<br />
 		</xp:repeat>
