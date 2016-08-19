@@ -110,7 +110,10 @@ public class PageController extends com.notesIn9.base.AbstractObject {
 		if (!this.getQueryString().containsKey(key)) {
 			return null;
 		} else {
-			return this.getQueryString().get(key);
+			String temp = this.getQueryString().get(key);
+			String sanitize = temp.replaceAll("\\#\\{[^\\}]+\\}", "");
+			
+			return sanitize;
 		}
 
 	}

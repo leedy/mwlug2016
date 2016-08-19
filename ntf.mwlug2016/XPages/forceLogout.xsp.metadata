@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="852580020069F0BB" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="156" sequence="61" unid="4FF0E35E9F9970F285258001005D1A5D">
+<created><datetime dst="true">20160731T125655,97-04</datetime></created>
+<modified><datetime dst="true">20160818T180325,11-04</datetime></modified>
+<revised><datetime dst="true">20160818T180325,10-04</datetime></revised>
+<lastaccessed><datetime dst="true">20160818T180325,11-04</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20160801T151709,41-04</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=David Leedy/O=Ni9</name></updatedby>
+<wassignedby><name>CN=David Leedy/O=Ni9</name></wassignedby>
+<item name="$Flags"><text>gC~4K</text></item>
+<item name="$TITLE" sign="true"><text>forceLogout.xsp</text></item>
+<item name="$DesignerVersion"><text>8.5.1</text></item>
+
+
+
+
+
+
+
+<item name="$FileNames" sign="true"><text>forceLogout.xsp</text></item></note>

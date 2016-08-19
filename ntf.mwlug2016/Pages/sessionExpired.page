@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <note class='form' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
  replicaid='852580020069F0BB'>
-<noteinfo noteid='15e' unid='A6AF960A9AC2421C85258001005D6A1D' sequence='2'>
+<noteinfo noteid='15e' unid='A6AF960A9AC2421C85258001005D6A1D' sequence='3'>
 <created><datetime dst='true'>20160731T130020,13-04</datetime></created>
-<modified><datetime dst='true'>20160801T151709,45-04</datetime></modified>
-<revised><datetime dst='true'>20160731T130059,47-04</datetime></revised>
-<lastaccessed><datetime dst='true'>20160801T151709,45-04</datetime></lastaccessed>
+<modified><datetime dst='true'>20160815T231619,61-04</datetime></modified>
+<revised><datetime dst='true'>20160815T231619,60-04</datetime></revised>
+<lastaccessed><datetime dst='true'>20160815T231619,61-04</datetime></lastaccessed>
 <addedtofile><datetime dst='true'>20160801T151709,45-04</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=David Leedy/O=Ni9</name></updatedby>
 <wassignedby><name>CN=David Leedy/O=Ni9</name></wassignedby>
+<item name='$Comment' sign='true'><text/></item>
 <item name='$HTMLCode' sign='true'>
 <rawitemdata type='1'>
 X/8QAAIADwAHAAAAAAAAAA==
 </rawitemdata></item>
 <item name='$TITLE'><text>sessionExpired</text></item>
-<item name='$Comment' sign='true'><text/></item>
 <item name='$Info' sign='true'>
 <rawitemdata type='1'>
 hhgBAIAAAAAAgAAAAQABAP///wAQAAAA
@@ -32,5 +32,6 @@ c2lvbiBleHBpcmVzIGFmdGVyIHNldmVyYWwgbWludXRlcyBvZiBpbmFjdGl2aXR5LgCBAoMEAQCF
 /wgAAQAADoECgwQBAIX/CAABAAAOgQKDBAEAzP8IAAAAAACF/w0AAQAADjxici8+AIECgwQBAIX/
 DQABAAAOPGJyLz4AgQKDBAEAhf82AAEAAA48aDM+PGEgaHJlZj0iaG9tZS54c3AiPk9wZW4gSG9t
 ZSBQYWdlPC9hPjwvaDM+zf8IAAAAAAA=
-</rawitemdata></item></note>
+</rawitemdata></item>
+<item name='$PublicAccess'><text>1</text></item></note>
 

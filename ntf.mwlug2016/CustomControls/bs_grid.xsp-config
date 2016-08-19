@@ -11,6 +11,7 @@
     <composite-extension>
       <designer-extension>
         <in-palette>true</in-palette>
+        <category>Bootstrap</category>
       </designer-extension>
     </composite-extension>
   </composite-component>
